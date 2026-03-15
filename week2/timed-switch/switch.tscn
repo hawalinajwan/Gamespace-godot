@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://08kn4x3scc5b"]
+
+[ext_resource type="Script" uid="uid://d27kpucem6cmm" path="res://saklar.gd" id="1_it01i"]
+[ext_resource type="Texture2D" uid="uid://d6dt6cv6mffk" path="res://Supplies.png" id="2_8307x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8307x"]
+size = Vector2(327, 407)
+
+[node name="switch" type="Node2D"]
+script = ExtResource("1_it01i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(164.816, 152.672)
+scale = Vector2(12.3211, 11.8836)
+texture = ExtResource("2_8307x")
+region_enabled = true
+region_rect = Rect2(0, 0, 30, 40.75)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(164.316, 180.172)
+shape = SubResource("RectangleShape2D_8307x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

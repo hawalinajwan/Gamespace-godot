@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hux0u4gxscjh"]
+
+[ext_resource type="PackedScene" uid="uid://cnbqcn2e108tu" path="res://player.tscn" id="1_dopym"]
+[ext_resource type="PackedScene" uid="uid://08kn4x3scc5b" path="res://switch.tscn" id="2_ootpb"]
+
+[node name="level1" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_dopym")]
+position = Vector2(497, 173)
+
+[node name="switch" parent="." instance=ExtResource("2_ootpb")]
