@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0d8nxc7fj5mv"]
+
+[ext_resource type="Script" uid="uid://btptotk8ipafy" path="res://bullet.gd" id="1_v7oki"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v7oki"]
+radius = 32.2
+height = 73.6
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_v7oki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 56)
+shape = SubResource("CapsuleShape2D_v7oki")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(72, 56)
+scale = Vector2(3.15, 3.55)
+
+[node name="muzzle" type="Marker2D" parent="."]
+position = Vector2(33, 54)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 42.0
+offset_top = 42.0
+offset_right = 104.0
+offset_bottom = 72.0
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
