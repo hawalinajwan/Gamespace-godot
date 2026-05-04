@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwvdljdti57ih"]
+
+[ext_resource type="Script" uid="uid://c2w0ub57t1pus" path="res://player.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b3p47yqq4wyno" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://diywho1edrihq" path="res://bullet.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dla8powd5w1ef" path="res://sniper.gd" id="3_1bvp3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0xm2m"]
+vertices = PackedVector2Array(2651.72, 1685.18, -165, 1743.78, -165.992, -737.227, 2843.18, -808.727)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-176, -747, 2854, -819, 2661, 1695, -175, 1754)])
+
+[sub_resource type="TileSet" id="TileSet_h2yge"]
+tile_size = Vector2i(20, 20)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 0
+navigation_layer_1/layers = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
+radius = 48.3448
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 75.6637
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 458.088
+
+[node name="Node2D" type="Node"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(180, 532)
+navigation_polygon = SubResource("NavigationPolygon_0xm2m")
+
+[node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
+tile_set = SubResource("TileSet_h2yge")
+rendering_quadrant_size = 26
+format = 2
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(531, 531)
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(247.687, 49.767)
+shape = SubResource("CircleShape2D_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+position = Vector2(248, 50)
+scale = Vector2(0.620117, 0.648438)
+texture = ExtResource("1_ig7tw")
+
+[node name="sniper" type="CharacterBody2D" parent="."]
+position = Vector2(531, 531)
+script = ExtResource("3_1bvp3")
+speed = 120.0
+bullet_scene = ExtResource("2_0xm2m")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="sniper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sniper"]
+position = Vector2(-60, 46)
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="sniper"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-60, 47)
+scale = Vector2(0.890625, 0.974211)
+texture = ExtResource("1_ig7tw")
+
+[node name="DetectionArea" type="Area2D" parent="sniper"]
+position = Vector2(-61, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sniper/DetectionArea"]
+position = Vector2(1, -4)
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="sniper"]
+position = Vector2(-55, 46)
+gizmo_extents = 166.0
