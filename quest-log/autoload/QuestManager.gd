@@ -15,9 +15,9 @@ var quests := {
 	}
 }
 
-# Loads saved quest progress when the singleton enters the scene tree.
+# Resets quest progress when the singleton enters the scene tree.
 func _ready() -> void:
-	load_save()
+	reset_progress()
 
 # Marks one objective as completed if it belongs to the quest.
 func complete_objective(quest_id: String, obj_id: String) -> void:
@@ -36,6 +36,12 @@ func is_quest_done(quest_id: String) -> bool:
 		if not (objective in quest["completed"]):
 			return false
 	return true
+
+# Clears all completed objectives and saves the empty progress.
+func reset_progress() -> void:
+	for quest_id in quests:
+		quests[quest_id]["completed"] = []
+	save()
 
 # Writes only completed objectives to user://save.json.
 func save() -> void:
