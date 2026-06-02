@@ -37,14 +37,17 @@ func is_quest_done(quest_id: String) -> bool:
 			return false
 	return true
 
-# Writes the current quest dictionary to user://save.json.
+# Writes only completed objectives to user://save.json.
 func save() -> void:
+	var data := {}
+	for quest_id in quests:
+		data[quest_id] = quests[quest_id]["completed"].duplicate()
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
 		return
-	file.store_string(JSON.stringify(quests))
+	file.store_string(JSON.stringify(data))
 
-# Reads user://save.json and applies saved quest progress.
+# Reads user://save.json and merges saved completed objectives.
 func load_save() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return
@@ -52,5 +55,12 @@ func load_save() -> void:
 	if file == null:
 		return
 	var data = JSON.parse_string(file.get_as_text())
-	if typeof(data) == TYPE_DICTIONARY:
-		quests = data
+	if typeof(data) != TYPE_DICTIONARY:
+		return
+	for quest_id in data.keys():
+		if not quests.has(quest_id):
+			continue
+		if typeof(data[quest_id]) == TYPE_ARRAY:
+			quests[quest_id]["completed"] = data[quest_id]
+		elif typeof(data[quest_id]) == TYPE_DICTIONARY and data[quest_id].has("completed"):
+			quests[quest_id]["completed"] = data[quest_id]["completed"]
