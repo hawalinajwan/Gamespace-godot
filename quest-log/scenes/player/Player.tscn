@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_player"]
+[ext_resource type="Texture2D" path="res://scenes/player/player.svg" id="2_sprite"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(32, 48)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 10
+script = ExtResource("1_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="BodyVisual" type="Polygon2D" parent="."]
+z_index = 9
+color = Color(1, 0.88, 0.22, 1)
+polygon = PackedVector2Array(-24, -36, 24, -36, 24, 36, -24, 36)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("2_sprite")

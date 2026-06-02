@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/QuestLog.gd" id="1_questlog"]
+
+[node name="QuestLog" type="Control"]
+custom_minimum_size = Vector2(260, 300)
+offset_right = 260.0
+offset_bottom = 300.0
+script = ExtResource("1_questlog")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(260, 300)
+offset_right = 260.0
+offset_bottom = 300.0
+
+[node name="QuestContainer" type="VBoxContainer" parent="Panel"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 252.0
+offset_bottom = 292.0

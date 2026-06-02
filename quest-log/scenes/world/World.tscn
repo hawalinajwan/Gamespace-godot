@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/QuestLog.tscn" id="2_questlog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(800, 40)
+
+[node name="World" type="Node2D"]
+
+[node name="SkyBackground" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.48, 0.78, 1, 1)
+polygon = PackedVector2Array(0, 0, 1152, 0, 1152, 648, 0, 648)
+
+[node name="Sun" type="Polygon2D" parent="."]
+z_index = -10
+color = Color(1, 0.9, 0.25, 1)
+polygon = PackedVector2Array(960, 70, 982, 92, 960, 114, 938, 92)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(400, 200)
+
+[node name="QuestLog" parent="." instance=ExtResource("2_questlog")]
+z_index = 50
+position = Vector2(10, 10)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(400, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="GroundVisual" type="ColorRect" parent="."]
+z_index = 1
+position = Vector2(0, 540)
+size = Vector2(1152, 48)
+color = Color(0.12, 0.58, 0.16, 1)
+
+[node name="GroundVisualBackup" type="Polygon2D" parent="."]
+z_index = 2
+color = Color(0.08, 0.38, 0.1, 1)
+polygon = PackedVector2Array(0, 588, 1152, 588, 1152, 648, 0, 648)
