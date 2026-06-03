@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://puzzleui_sp"]
+
+[ext_resource type="Script" path="res://scenes/ui/PuzzleUI.gd" id="1_script"]
+
+[node name="PuzzleUI" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 220.0
+offset_bottom = 70.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 64.0
+
+[node name="StatusLabel" type="Label" parent="Panel/VBox"]
+text = "Geser blok ke zona hijau!"
+
+[node name="BlocksLabel" type="Label" parent="Panel/VBox"]
+text = "Blok terpasang: 0 / 2"
