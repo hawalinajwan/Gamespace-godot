@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://player_pd"]
+
+[ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_script"]
+[ext_resource type="Script" path="res://scenes/objects/DustEmitter.gd" id="2_dust"]
+
+[sub_resource type="CapsuleShape2D" id="1_shape"]
+radius = 10.0
+height = 28.0
+
+[sub_resource type="PlaceholderTexture2D" id="2_tex"]
+size = Vector2(24, 32)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1_shape")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("2_tex")
+modulate = Color(0.75, 0.55, 1.0, 1.0)
+
+[node name="JumpDust" type="CPUParticles2D" parent="."]
+z_index = -1
+script = ExtResource("2_dust")
+dust_type = "jump"
+
+[node name="LandDust" type="CPUParticles2D" parent="."]
+z_index = -1
+script = ExtResource("2_dust")
+dust_type = "land"
+
+[node name="RunDust" type="CPUParticles2D" parent="."]
+z_index = -1
+script = ExtResource("2_dust")
+dust_type = "run"
