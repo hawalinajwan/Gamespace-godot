@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://glasstile_gf"]
+
+[ext_resource type="Script" path="res://scenes/objects/GlassTile.gd" id="1_script"]
+[ext_resource type="Script" path="res://scenes/objects/CrackLayer.gd" id="2_crack"]
+
+[sub_resource type="RectangleShape2D" id="1_shape"]
+size = Vector2(96, 12)
+
+[node name="GlassTile" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1_shape")
+
+[node name="Visual" type="ColorRect" parent="."]
+offset_left = -48.0
+offset_top = -6.0
+offset_right = 48.0
+offset_bottom = 6.0
+color = Color(0.6, 0.85, 1.0, 0.45)
+
+[node name="CrackLayer" type="Node2D" parent="."]
+script = ExtResource("2_crack")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://glassui_gf"]
+
+[ext_resource type="Script" path="res://scenes/ui/GlassUI.gd" id="1_script"]
+
+[node name="GlassUI" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 180.0
+offset_bottom = 120.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 172.0
+offset_bottom = 114.0
