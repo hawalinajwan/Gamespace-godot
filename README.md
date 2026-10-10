@@ -35,10 +35,9 @@ Setiap folder adalah satu proyek Godot terpisah dan bisa langsung dibuka dari **
 2. Import folder proyek yang mau dijalankan, lalu tekan **F5**
 3. Data tersimpan otomatis di folder `user://` (bisa dibuka dari `Project → File System`)
 
-## Kontributor
+## Penulis
 
-| Nama | Kontribusi |
-|---|---|
-| `hawalinajwan` | `quest-log`, `week-6`, `week-7`, `week-8` |
-| `awa` | `week2`, `week3`, `week4`, `berbelok-dengan-efek-drift` |
-| `Hana` | Inisialisasi repository |
+Seluruh proyek di repository ini dibuat sendiri sebagai tugas individu Game Development UKM.
+Seluruh commit memakai satu alamat email penulis yang sama, dengan beberapa nama berbeda pada konfigurasi git lokal per mesin.
+
+Aset pihak ketiga pada `berbelok-dengan-efek-drift` tetap mengikuti lisensinya di `berbelok-dengan-efek-drift/assets/LICENSE & CREDITS.txt`.
