@@ -3,7 +3,7 @@
 Kumpulan game Godot untuk materi dan tugas individu Game Development UKM.
 Setiap folder adalah satu proyek Godot terpisah dan bisa langsung dibuka dari **Godot Project Manager → Import → pilih folder `project.godot`**.
 
-- **Engine:** Godot 4.6 (Forward Plus)
+- **Engine:** Godot 4.4 dan 4.6 (Forward Plus)
 - **Bahasa:** GDScript
 - **Kontrol umum:** `A` / `D` atau `←` / `→` untuk bergerak, `W` / `Space` / `↑` untuk melompat
 
@@ -16,9 +16,9 @@ Setiap folder adalah satu proyek Godot terpisah dan bisa langsung dibuka dari **
 | `week4/sniper` | Sniper | Game tembak jarak jauh dengan scope |
 | `quest-log` | Quest Log | Platformer dengan quest log, `QuestManager` autoload dan save/load ke `user://save.json` |
 | `week-6` | Sliding Puzzle | Mekanik geser blok ke target zone dengan `PuzzleManager` autoload |
-| `week-7` | Glass Floor | Lantai kaca yang retak bertahap, `GlassManager` autoload |
-| `week-8` | Particle Dust | Debu partikel mengikuti gerakan player (`DustEmitter`) |
-| `berbelok-dengan-efek-drift` | Berbelok dengan Efek Drift | Game platformer tim, bukan tugas individu |
+| `week-7` | Glass Floor | Lantai kaca bertingkat retak (`GlassManager` autoload, stage 0-3, tipe `delayed`/`instant`, save ke `user://glass_save.json`) |
+| `week-8` | Particle Dust | `CPUParticles2D` untuk debu saat `jump`, `land`, dan `run` |
+| `berbelok-dengan-efek-drift` | Berbelok dengan Efek Drift | Mobil 2D dengan fisika drift (`car.gd`, `CharacterBody2D`, `drift` + `friction` + `turn_speed`) |
 
 ## Struktur `quest-log`
 
@@ -31,7 +31,7 @@ Setiap folder adalah satu proyek Godot terpisah dan bisa langsung dibuka dari **
 
 ## Menjalankan
 
-1. Buka Godot 4.6
+1. Buka Godot 4.4 atau 4.6
 2. Import folder proyek yang mau dijalankan, lalu tekan **F5**
 3. Data tersimpan otomatis di folder `user://` (bisa dibuka dari `Project → File System`)
 
